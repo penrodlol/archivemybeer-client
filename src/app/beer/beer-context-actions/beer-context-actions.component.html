@@ -1,0 +1,17 @@
+<nx-toolbar>
+    <span style="margin-right: auto;"></span>
+    <button
+        nxButton="secondary small"
+        type="button"
+        class="nx-margin-right-xs nx-margin-bottom-0"
+        (click)="onEdit()">
+        {{isEditing ? 'Cancel' : 'Edit'}}
+    </button>
+    <button
+        nxButton="primary small"
+        type="button"
+        class="nx-margin-bottom-0"
+        (click)="onDelete()">
+        Delete
+     </button>
+</nx-toolbar>

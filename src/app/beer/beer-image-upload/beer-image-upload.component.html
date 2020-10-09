@@ -1,0 +1,37 @@
+<form [formGroup]="imageUploadForm">
+    <nx-file-uploader
+        #imageUpdate
+        formControlName="image"
+        required
+        accept="image/jpeg, image/x-png, image/png"
+        (filesSelected)="onFilesSelected($event)"
+        (fileDeleted)="onFileDeleted()">
+        <nx-label
+            size="small"
+            class="nx-margin-bottom-3xs">
+            Required file to upload
+        </nx-label>
+        <span
+            class="nx-margin-bottom-s"
+            nxFileUploadHint>
+            Only JPG or PNG files are accepted.
+        </span>
+        <nx-file-uploader-drop-zone class="nx-margin-bottom-m">
+            <span class="nx-margin-right-2xs">Drag your file here to</span>
+            <button
+                nxButton="primary small-medium"
+                type="button"
+                nxFileUploadButton>
+                Add File
+            </button>
+          </nx-file-uploader-drop-zone>
+        <nx-error>Required!</nx-error>
+    </nx-file-uploader>
+</form>
+<ng-container *ngIf="src">
+    <figure nxFigure="1by1">
+        <img
+            [src]="src"
+            alt="Beer Image Upload">
+    </figure>
+</ng-container>

@@ -1,0 +1,70 @@
+<div
+  nxLayout="grid"
+  infinite-scroll
+  infiniteScrollDistance='2'
+  infiniteScrollThrottle='50'
+  (scrolled)='onScrolled()'>
+  <div
+    ambBeerListRenderObserver
+    (rendererd)="onRendered()"
+    nxRow>
+    <div
+      *ngFor="let beer of beers$ | async"
+      nxCol="3">
+      <nx-card
+        [style.width.%]="100"
+        (click)="onBeerSelected(beer)">
+        <h1
+          nxHeadline="subsection-large"
+          [line-truncation]="1"
+          [nxTooltip]="beer.name">
+          {{beer.name}}
+        </h1>
+        <h2
+          nxHeadline="subsection-large"
+          [line-truncation]="1"
+          [nxTooltip]="beer.brewer">
+          {{beer.brewer}}
+        </h2>
+        <figure nxFigure="1by1">
+          <img
+            [src]="beer.imageUrl"
+            alt="Beer Image">
+        </figure>
+        <div ngCopyText="normal">
+          <h2
+            class="nx-margin-y-m margin-box"
+            [line-truncation]="1"
+            [nxTooltip]="beer.style">
+            Style: {{beer.style}}
+          </h2>
+          <h2
+            [line-truncation]="1"
+            [nxTooltip]="beer.city">
+            City: {{beer.city}}
+          </h2>
+          <h2
+            [line-truncation]="1"
+            [nxTooltip]="beer.state">
+            State: {{beer.state}}
+          </h2>
+          <h2
+            [line-truncation]="1"
+            [nxTooltip]="beer.country">
+            Country: {{beer.country}}
+          </h2>
+        </div>
+      </nx-card>
+    </div>
+  </div>
+</div>
+<button
+  nxButton="primary medium"
+  type="button"
+  style="z-index: 99; position: fixed; bottom: 5px; right: 50px;"
+  (click)="onAdd()">
+  Add
+</button>
+<ng-container *ngIf="isRendering && !(finished$ | async)">
+  <amb-spinner></amb-spinner>
+</ng-container>
