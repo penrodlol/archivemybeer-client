@@ -1,0 +1,13 @@
+.amb-container {
+    &__content {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__background {
+        position: fixed;
+        z-index: 1;
+        bottom: 0;
+        width: 100%;
+    }
+}

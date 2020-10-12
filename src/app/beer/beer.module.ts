@@ -20,12 +20,10 @@ import { BeerContextComponent } from './beer-context/beer-context.component';
 import { BeerContextActionsComponent } from './beer-context-actions/beer-context-actions.component';
 import { BeerListRenderObserverDirective } from './beers-list/beer-list-render-observer.directive';
 import { BeerImageUploadComponent } from './beer-image-upload/beer-image-upload.component';
+import { SvgIconsModule } from '@ngneat/svg-icon';
 
 const beerRoutes: Routes = [
-  {
-    path: '',
-    component: BeersListComponent,
-  },
+  { path: '', component: BeersListComponent },
 ];
 
 @NgModule({
@@ -41,6 +39,7 @@ const beerRoutes: Routes = [
     ReactiveFormsModule,
     ContentLoaderModule,
     SpinnerModule,
+    SvgIconsModule,
     NxGridModule,
     NxCardModule,
     NxImageModule,

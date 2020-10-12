@@ -39,22 +39,22 @@ export class BeersListComponent {
   }
 
   onScrolled(): void {
-    // if (beersState().finished) { return; }
+    if (beersState().finished) { return; }
 
-    // this.isRendering = true;
+    this.isRendering = true;
 
-    // this.getBeersGQL
-    //   .watch()
-    //   .fetchMore({ variables: { skip: beersState().index } })
-    //   .then(({ data }) => {
-    //     const update = produce(beersState(), current => {
-    //       data.beers.collection.forEach(beer => current.collection.push(beer));
-    //       current.finished = data.beers.finished;
-    //       current.index += 20;
-    //     });
+    this.getBeersGQL
+      .watch()
+      .fetchMore({ variables: { skip: beersState().index } })
+      .then(({ data }) => {
+        const update = produce(beersState(), current => {
+          data.beers.collection.forEach(beer => current.collection.push(beer));
+          current.finished = data.beers.finished;
+          current.index += 20;
+        });
 
-    //     beersState(update);
-    //   });
+        beersState(update);
+      });
   }
 
   onAdd(): void {

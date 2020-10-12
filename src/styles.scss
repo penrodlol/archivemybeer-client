@@ -1,3 +1,8 @@
 @import "@angular/cdk/overlay-prebuilt.css";
 @import "@angular/cdk/a11y-prebuilt.css";
 @import "@aposin/ng-aquila/css/utilities.css";
+@import 'theme.scss';
+
+@include nx-build-theme(archivemybeer-theme);
+
+* { font-family: 'Fira Code', 'Public Sans Latin', sans-serif; }

@@ -1,8 +1,13 @@
-<header
-    nx-header
-    class="nx-margin-bottom-2m">
-    <nx-header-brand class="nx-margin-right-5xl">
-        <nx-header-app-title>Archive My Beer</nx-header-app-title>
-    </nx-header-brand>
-</header>
-<router-outlet></router-outlet>
+<div class="amb-container">
+
+    <section class="amb-container__content">
+        <amb-header></amb-header>
+        <router-outlet></router-outlet>
+    </section>
+    
+    <section class="amb-container__background">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" [style.margin-bottom.px]="-6"><path fill="#2c2c2c" fill-opacity="1" d="M0,128L48,144C96,160,192,192,288,186.7C384,181,480,139,576,144C672,149,768,203,864,224C960,245,1056,235,1152,213.3C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+        <div style="height: 20vh; background-color: #2c2c2c;"></div>
+    </section>
+
+</div>

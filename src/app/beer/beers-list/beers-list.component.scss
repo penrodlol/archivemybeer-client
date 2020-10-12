@@ -1,0 +1,18 @@
+.beers-list {
+    &__card {
+        cursor: pointer;
+        width: 100%;
+
+        &--image {
+            border: solid 1px var(--card-border-color);
+            border-radius: var(--card-border-radius);
+        }
+
+        &--origin {
+            background-color: var(--ui-03);
+            border: solid 1px var(--ui-background);
+            border-radius: var(--card-border-radius);
+            padding: 0 15px !important;
+        }
+    }
+}

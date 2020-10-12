@@ -1,0 +1,30 @@
+@import "@aposin/ng-aquila/styles/theming";
+
+$archivemybeer-theme: (
+    // GENERAL
+    ui-background: #222,
+    ui-02: #1a1a1a,
+    ui-03: #3a3939,
+    ui-04: #92a892,
+    text-01: #dbdbdb,
+    text-02: #0c0c0c,
+
+    // HEADER
+    header-background-color: var(--ui-02),
+    header-border-color: var(--text-01),
+
+    // LINK
+    interactive-text: var(--text-01),
+    hover-link: var(--text-01),
+    // active-primary: #92a892,
+
+    // CARD
+    card-border-color: var(--text-01),
+    card-background-color: var(--ui-02),
+
+    // TOOLTIP
+    tooltip-background-color: var(--ui-04),
+    tooltip-text-color: var(--text-02),
+);
+
+$nx-themes: nx-register-theme($archivemybeer-theme, archivemybeer-theme);
