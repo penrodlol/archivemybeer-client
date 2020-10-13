@@ -28,16 +28,6 @@ export class BeersListComponent {
     private getfinishedGQL: GetFinishedGQL,
   ) { }
 
-  onBeerSelected(beer: IBeer): void {
-    this.dialogService
-      .open(BeerContextComponent, {
-        showCloseIcon: true,
-        height: '95vh', minHeight: '95vh', maxHeight: '95vh',
-        width: '95vw', minWidth: '95vw', maxWidth: '95vw',
-        data: { beer }
-      });
-  }
-
   onScrolled(): void {
     if (beersState().finished) { return; }
 

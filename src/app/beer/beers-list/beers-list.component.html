@@ -12,66 +12,7 @@
     <div
       *ngFor="let beer of beers$ | async"
       nxCol="3">
-      <nx-card
-        class="nx-margin-y-m beers-list__card"
-        (click)="onBeerSelected(beer)">
-        <h2
-          nxHeadline="subsection-large"
-          [line-truncation]="1"
-          [nxTooltip]="beer.name">
-          {{beer.name}}
-        </h2>
-        <h2
-          nxHeadline="subsection-large"
-          [line-truncation]="1"
-          [nxTooltip]="beer.brewer">
-          {{beer.brewer}}
-        </h2>
-        <hr class="nx-margin-bottom-s margin-box">
-        <figure
-          nxFigure="1by1"
-          class="beers-list__card--image">
-          <img
-            [style.border-radius]="'inherit'"
-            [src]="beer.imageUrl"
-            alt="Beer Image">
-        </figure>
-        <hr class="nx-margin-top-s margin-box">
-        <div ngCopyText="normal">
-          <div
-            class="beers-list__card--style"
-            nxLayout="grid">
-            <div nxRow>
-              <div nxCol="2">
-                <svg-icon
-                  class="nx-margin-y-s margin-box"
-                  key="tag"
-                  fontSize="20px">
-                </svg-icon>
-              </div>
-              <div nxCol="10">
-                <h2 [line-truncation]="1">{{beer.style}}</h2>
-              </div>
-            </div>
-          </div>
-          <div
-            class="beers-list__card--origin"
-            nxLayout="grid">
-            <div nxRow>
-              <div nxCol="4">
-                <h2>City:</h2>
-                <h2>State:</h2>
-                <h2>Country:</h2>
-              </div>
-              <div nxCol="8">
-                <h2 [line-truncation]="1">{{beer.city}}</h2>
-                <h2 [line-truncation]="1">{{beer.state}}</h2>
-                <h2 [line-truncation]="1">{{beer.country}}</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nx-card>
+      <amb-beer-card [beer]="beer"></amb-beer-card>
     </div>
   </div>
 </div>

@@ -1,0 +1,93 @@
+<nx-card
+    class="nx-margin-y-m beer-card"
+    (click)="onBeerSelected(beer)">
+    <h2
+      #name
+      nxHeadline="subsection-large"
+      [line-truncation]="1"
+      [nxTooltip]="beer.name"
+      [nxTooltipDisabled]="!name.event"
+      (hasTruncated)="name.event = $event">
+      {{beer.name}}
+    </h2>
+    <h2
+      #brewer
+      nxHeadline="subsection-large"
+      [line-truncation]="1"
+      [nxTooltip]="beer.brewer"
+      [nxTooltipDisabled]="!brewer.event"
+      (hasTruncated)="brewer.event = $event">
+      {{beer.brewer}}
+    </h2>
+    <hr class="nx-margin-bottom-s margin-box">
+    <figure
+      nxFigure="1by1"
+      class="beer-card__image">
+      <img
+        [style.border-radius]="'inherit'"
+        [src]="beer.imageUrl"
+        alt="Beer Image">
+    </figure>
+    <hr class="nx-margin-top-s margin-box">
+    <div ngCopyText="normal">
+      <div
+        nxLayout="grid">
+        <div nxRow>
+          <div nxCol="2">
+            <svg-icon
+              class="nx-margin-y-s margin-box"
+              key="tag"
+              fontSize="20px">
+            </svg-icon>
+          </div>
+          <div nxCol="10">
+            <h2
+              #style
+              [line-truncation]="1"
+              [nxTooltip]="beer.style"
+              [nxTooltipDisabled]="!style.event"
+              (hasTruncated)="style.event = $event">
+              {{beer.style}}
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        class="beer-card__origin"
+        nxLayout="grid">
+        <div nxRow>
+          <div nxCol="4">
+            <h2>City:</h2>
+            <h2>State:</h2>
+            <h2>Country:</h2>
+          </div>
+          <div nxCol="8">
+            <h2
+              #city
+              [line-truncation]="1"
+              [nxTooltip]="beer.city"
+              [nxTooltipDisabled]="!city.event"
+              (hasTruncated)="city.event = $event">
+              {{beer.city}}
+            </h2>
+            <h2
+              #state
+              [line-truncation]="1"
+              [nxTooltip]="beer.state"
+              [nxTooltipDisabled]="!name.state"
+              (hasTruncated)="name.state = $event">
+              {{beer.state}}
+            </h2>
+            <h2
+              #country
+              [line-truncation]="1"
+              [nxTooltip]="beer.country"
+              [nxTooltipDisabled]="!country.event"
+              (hasTruncated)="country.event = $event">
+              {{beer.country}}
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+</nx-card>

@@ -21,6 +21,7 @@ import { BeerContextActionsComponent } from './beer-context-actions/beer-context
 import { BeerListRenderObserverDirective } from './beers-list/beer-list-render-observer.directive';
 import { BeerImageUploadComponent } from './beer-image-upload/beer-image-upload.component';
 import { SvgIconsModule } from '@ngneat/svg-icon';
+import { BeerCardComponent } from './beer-card/beer-card.component';
 
 const beerRoutes: Routes = [
   { path: '', component: BeersListComponent },
@@ -33,6 +34,7 @@ const beerRoutes: Routes = [
     BeerContextActionsComponent,
     BeerListRenderObserverDirective,
     BeerImageUploadComponent,
+    BeerCardComponent,
   ],
   imports: [
     CommonModule,
