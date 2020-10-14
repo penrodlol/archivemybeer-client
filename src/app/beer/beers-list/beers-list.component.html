@@ -7,7 +7,8 @@
   (scrolled)='onScrolled()'>
   <div
     ambBeerListRenderObserver
-    (rendererd)="onRendered()"
+    (initialLoad)="onInitialLoad()"
+    (renderedMore)="onRenderedMore()"
     nxRow>
     <div
       *ngFor="let beer of beers$ | async"
@@ -16,6 +17,11 @@
     </div>
   </div>
 </div>
+
+<ng-container *ngIf="isLoadingInitial">
+  <amb-beers-list-content-loader [columns]="4"></amb-beers-list-content-loader>
+</ng-container>
+
 <ng-container *ngIf="isRendering && !(finished$ | async)">
   <amb-spinner></amb-spinner>
 </ng-container>

@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { GetCollectionGQL, GetFinishedGQL } from '../../gql/local/beer-state.gql';
 import { IBeer } from 'src/app/models/beer.model';
 import { NxDialogService } from '@aposin/ng-aquila/modal';
-import { BeerContextComponent } from '../beer-context/beer-context.component';
 import { beersState } from 'src/app/graphql.module';
 import { GetBeersGQL } from 'src/app/gql/remote/beers.gql';
 import produce from 'immer';
@@ -20,6 +19,7 @@ export class BeersListComponent {
   finished$: Observable<boolean> = this.getfinishedGQL.watch().valueChanges.pipe(map(ref => ref.data.finished));
 
   isRendering = false;
+  isLoadingInitial = true;
 
   constructor(
     public dialogService: NxDialogService,
@@ -47,14 +47,7 @@ export class BeersListComponent {
       });
   }
 
-  onAdd(): void {
-    this.dialogService
-    .open(BeerContextComponent, {
-      showCloseIcon: true,
-      height: '95vh', minHeight: '95vh', maxHeight: '95vh',
-      width: '95vw', minWidth: '95vw', maxWidth: '95vw',
-    });
-  }
+  onInitialLoad = () => this.isLoadingInitial = false;
 
-  onRendered = () => this.isRendering = false;
+  onRenderedMore = () => this.isRendering = false;
 }
