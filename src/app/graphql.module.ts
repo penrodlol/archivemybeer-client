@@ -4,7 +4,6 @@ import {ApolloClientOptions, InMemoryCache, makeVar} from '@apollo/client/core';
 import {HttpLink} from 'apollo-angular/http';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
-import { IBeer } from './models/beer.model';
 
 export const beersState = makeVar({
   collection: [],
@@ -19,8 +18,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     typePolicies: {
       Query: {
         fields: {
-          collection: { read: (): IBeer[] => beersState().collection },
-          finished: { read: (): boolean => beersState().finished },
+          state: { read: (): any => beersState() }
         }
       }
     }

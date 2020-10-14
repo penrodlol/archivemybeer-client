@@ -1,8 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { GetCollectionGQL, GetFinishedGQL } from '../../gql/local/beer-state.gql';
-import { IBeer } from 'src/app/models/beer.model';
+import { GetBeerStateGQL } from '../../gql/local/beer-state.gql';
 import { NxDialogService } from '@aposin/ng-aquila/modal';
 import { beersState } from 'src/app/graphql.module';
 import { GetBeersGQL } from 'src/app/gql/remote/beers.gql';
@@ -15,8 +12,7 @@ import produce from 'immer';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BeersListComponent {
-  beers$: Observable<IBeer[]> = this.getCollectionGQL.watch().valueChanges.pipe(map(ref => ref.data.collection));
-  finished$: Observable<boolean> = this.getfinishedGQL.watch().valueChanges.pipe(map(ref => ref.data.finished));
+  beerState$ = this.getBeerStateGQL.watch().valueChanges;
 
   isRendering = false;
   isLoadingInitial = true;
@@ -24,8 +20,7 @@ export class BeersListComponent {
   constructor(
     public dialogService: NxDialogService,
     private getBeersGQL: GetBeersGQL,
-    private getCollectionGQL: GetCollectionGQL,
-    private getfinishedGQL: GetFinishedGQL,
+    private getBeerStateGQL: GetBeerStateGQL,
   ) { }
 
   onScrolled(): void {

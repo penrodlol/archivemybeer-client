@@ -11,7 +11,7 @@
     (renderedMore)="onRenderedMore()"
     nxRow>
     <div
-      *ngFor="let beer of beers$ | async"
+      *ngFor="let beer of beerState$ | async | select: 'collection'"
       nxCol="3">
       <amb-beer-card [beer]="beer"></amb-beer-card>
     </div>
@@ -22,6 +22,6 @@
   <amb-beers-list-content-loader [columns]="4"></amb-beers-list-content-loader>
 </ng-container>
 
-<ng-container *ngIf="isRendering && !(finished$ | async)">
+<ng-container *ngIf="isRendering && !(beerState$ | async | select: 'finished')">
   <amb-spinner></amb-spinner>
 </ng-container>

@@ -11,6 +11,7 @@ import { NxToolbarModule } from '@aposin/ng-aquila/toolbar';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxFileUploaderModule } from '@aposin/ng-aquila/file-uploader';
+import { SvgIconsModule } from '@ngneat/svg-icon';
 import { LineTruncationLibModule } from 'ngx-line-truncation';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ContentLoaderModule } from '../content-loader/content-loader.module';
@@ -20,8 +21,8 @@ import { BeerContextComponent } from './beer-context/beer-context.component';
 import { BeerContextActionsComponent } from './beer-context-actions/beer-context-actions.component';
 import { BeerListRenderObserverDirective } from './beers-list/beer-list-render-observer.directive';
 import { BeerImageUploadComponent } from './beer-image-upload/beer-image-upload.component';
-import { SvgIconsModule } from '@ngneat/svg-icon';
 import { BeerCardComponent } from './beer-card/beer-card.component';
+import { SelectPipe } from './pipes/select.pipe';
 
 const beerRoutes: Routes = [
   { path: '', component: BeersListComponent },
@@ -35,6 +36,7 @@ const beerRoutes: Routes = [
     BeerListRenderObserverDirective,
     BeerImageUploadComponent,
     BeerCardComponent,
+    SelectPipe,
   ],
   imports: [
     CommonModule,
