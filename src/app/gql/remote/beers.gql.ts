@@ -11,14 +11,18 @@ type BeersResponse = {
 };
 
 type BeersVariables = {
-    skip: number;
+    beersInput: {
+        skip?: number;
+        search?: string;
+        sortOrder?: 'asc' | 'desc';
+    }
 };
 
 @Injectable({ providedIn: 'root' })
 export class GetBeersGQL extends Query<BeersResponse, BeersVariables> {
     document = gql`
-        query GetBeers($skip: Int) {
-            beers(skip: $skip) {
+        query GetBeers($beersInput: BeersInputDTO) {
+            beers(beersInput: $beersInput) {
                 collection {
                     _id
                     name
