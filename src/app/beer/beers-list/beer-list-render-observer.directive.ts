@@ -6,12 +6,14 @@ export class BeerListRenderObserverDirective implements AfterViewInit, OnDestroy
   @Output() renderedMore = new EventEmitter<boolean>();
 
   private renderMutation: MutationObserver;
+  private childElementCount = 0;
 
   constructor(private el: ElementRef) { }
 
   ngAfterViewInit(): void {
     this.renderMutation = new MutationObserver(() => {
-      this.el.nativeElement.childElementCount <= 20 ?
+      this.childElementCount = this.el.nativeElement.childElementCount;
+      this.childElementCount > 0 && this.childElementCount <= 20 ?
         this.initialLoad.emit(true) :
         this.renderedMore.emit(true);
     });
