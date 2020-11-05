@@ -1,26 +1,27 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { GetBeerStateGQL } from '../../gql/local/beer-state.gql';
-import { NxDialogService } from '@aposin/ng-aquila/modal';
-import { beersState } from 'src/app/graphql.module';
+import { GetBeersStateGQL } from '../../gql/local/beer-state.gql';
+import { addMany, beersState } from 'src/app/app.state';
 import { GetBeersGQL } from 'src/app/gql/remote/beers.gql';
-import produce from 'immer';
+import { BeersListColumnsService } from './beers-list-columns.service';
 
 @Component({
   selector: 'amb-beers-list',
   templateUrl: './beers-list.component.html',
   styleUrls: ['./beers-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  providers: [BeersListColumnsService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BeersListComponent {
-  beerState$ = this.getBeerStateGQL.watch().valueChanges;
+  beerState$ = this.getBeersStateGQL.watch().valueChanges;
+  nxCol$ = this.columnsService.nxCol$;
 
   isRendering = false;
   isLoadingInitial = true;
 
   constructor(
-    public dialogService: NxDialogService,
+    private columnsService: BeersListColumnsService,
     private getBeersGQL: GetBeersGQL,
-    private getBeerStateGQL: GetBeerStateGQL,
+    private getBeersStateGQL: GetBeersStateGQL,
   ) { }
 
   onScrolled(): void {
@@ -30,16 +31,9 @@ export class BeersListComponent {
 
     this.getBeersGQL
       .watch()
-      .fetchMore({ variables: { skip: beersState().index } })
-      .then(({ data }) => {
-        const update = produce(beersState(), current => {
-          data.beers.collection.forEach(beer => current.collection.push(beer));
-          current.finished = data.beers.finished;
-          current.index += 20;
-        });
-
-        beersState(update);
-      });
+      .fetchMore({ variables: { beersInput: { skip: beersState().index } } })
+      .then(({ data }) => data.beers)
+      .then(({ collection, finished }) => addMany({ collection, finished }));
   }
 
   onInitialLoad = () => this.isLoadingInitial = false;

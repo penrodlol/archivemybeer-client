@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetBeersGQL } from './gql/remote/beers.gql';
-import { beersState } from './graphql.module';
-import { take } from 'rxjs/operators';
+import { addMany } from './app.state';
+import { pluck, take } from 'rxjs/operators';
 
 @Component({
   selector: 'amb-root',
@@ -17,13 +17,12 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.getBeersGQL
       .fetch()
-      .pipe(take(1))
-      .subscribe(ref => {
-        beersState({
-          collection: ref.data.beers.collection,
-          finished: ref.data.beers.finished,
-          index: 20,
-        });
+      .pipe(
+        pluck('data', 'beers'),
+        take(1)
+      )
+      .subscribe(({ collection, finished }) => {
+        addMany({ collection, finished });
       });
   }
 

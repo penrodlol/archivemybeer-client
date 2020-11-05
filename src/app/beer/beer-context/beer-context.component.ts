@@ -7,7 +7,7 @@ import { UpdateBeerGQL } from '../../gql/remote/update-beer.gql';
 import { DeleteBeerGQL } from '../../gql/remote/delete-beer.gql';
 import produce from 'immer';
 import { take } from 'rxjs/operators';
-import { beersState } from 'src/app/graphql.module';
+import { beersState } from 'src/app/app.state';
 
 @Component({
   selector: 'amb-beer-context',
@@ -49,21 +49,21 @@ export class BeerContextComponent implements OnInit {
   onEditing = (isEditing: boolean) => this.isEditing = isEditing;
 
   onDelete(): void {
-    this.deleteBeerGQL
-      .mutate({
-        id: this.data.beer._id,
-        image: this.data.beer.image
-      })
-      .pipe(take(1))
-      .subscribe((ref: any) => {
-        const del = produce(beersState(), draft => {
-          const index = draft.collection.findIndex(beer => beer._id === ref.data.id);
-          draft.collection.splice(draft.collection[index], 1);
-        });
+    // this.deleteBeerGQL
+    //   .mutate({
+    //     id: this.data.beer._id,
+    //     image: this.data.beer.image
+    //   })
+    //   .pipe(take(1))
+    //   .subscribe((ref: any) => {
+    //     const del = produce(beersState(), draft => {
+    //       const index = draft.collection.findIndex(beer => beer._id === ref.data.id);
+    //       draft.collection.splice(draft.collection[index], 1);
+    //     });
 
-        beersState(del);
-        this.dialogService.closeAll();
-      });
+    //     beersState(del);
+    //     this.dialogService.closeAll();
+    //   });
   }
 
   onSave(): void {
@@ -83,7 +83,7 @@ export class BeerContextComponent implements OnInit {
           const index = draft.collection.findIndex(beer => beer._id === ref.data.update._id);
           const imageUrl = ref.data.update.imageUrl ? ref.data.update.imageUrl : draft.collection[index].imageUrl;
 
-          draft.collection[index] = { ...ref.data.update, imageUrl };
+          // draft.collection[index] = { ...ref.data.update, imageUrl };
         });
 
         beersState(update);
