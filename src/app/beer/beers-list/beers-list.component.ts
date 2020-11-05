@@ -13,13 +13,13 @@ import { BeersListColumnsService } from './beers-list-columns.service';
 })
 export class BeersListComponent {
   beerState$ = this.getBeersStateGQL.watch().valueChanges;
-  nxCol$ = this.columnsService.nxCol$;
+  nxCol$ = this.beersListColumnsService.nxCol$;
 
   isRendering = false;
   isLoadingInitial = true;
 
   constructor(
-    private columnsService: BeersListColumnsService,
+    private beersListColumnsService: BeersListColumnsService,
     private getBeersGQL: GetBeersGQL,
     private getBeersStateGQL: GetBeersStateGQL,
   ) { }

@@ -14,7 +14,7 @@ export class BeersListColumnsService {
       this.viewport.max(NxBreakpoints.BREAKPOINT_LARGE),
       this.viewport.max(NxBreakpoints.BREAKPOINT_XLARGE),
       this.viewport.max(NxBreakpoints.BREAKPOINT_2XLARGE),
-      this.viewport.max(NxBreakpoints.BREAKPOINT_3XLARGE),
+      this.viewport.min(NxBreakpoints.BREAKPOINT_3XLARGE),
     ])
     .pipe(
       switchMap(breakpoints => from(breakpoints.map(breakpoint => ({
