@@ -14,7 +14,6 @@ import { NxFileUploaderModule } from '@aposin/ng-aquila/file-uploader';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 import { LineTruncationLibModule } from 'ngx-line-truncation';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { ContentLoaderModule } from '../content-loader/content-loader.module';
 import { SpinnerModule } from '../shared/spinner/spinner.module';
 import { BeersListComponent } from './beers-list/beers-list.component';
 import { BeerContextComponent } from './beer-context/beer-context.component';
@@ -41,7 +40,6 @@ const beerRoutes: Routes = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ContentLoaderModule,
     SpinnerModule,
     SvgIconsModule,
     NxGridModule,

@@ -7,21 +7,27 @@
   (scrolled)='onScrolled()'>
   <div
     ambBeerListRenderObserver
+    nxRow
     (initialLoad)="onInitialLoad()"
-    (renderedMore)="onRenderedMore()"
-    nxRow>
-    <div
-      *ngFor="let beer of beerState$ | async | select: 'collection'"
-      nxCol="3">
-      <amb-beer-card [beer]="beer"></amb-beer-card>
-    </div>
+    (renderedMore)="onRenderedMore()">
+    <ng-container *ngIf="(nxCol$ | async) as nxCol">
+      <div
+        *ngFor="let beer of beerState$ | async | select: 'collection'"
+        [nxCol]="nxCol">
+        <amb-beer-card [beer]="beer"></amb-beer-card>
+      </div>
+    </ng-container>
   </div>
 </div>
 
 <ng-container *ngIf="isLoadingInitial">
-  <amb-beers-list-content-loader [columns]="4"></amb-beers-list-content-loader>
+  <amb-spinner
+    type=square-jelly-box
+    size=large
+    message="Fetching your beers...">
+  </amb-spinner>
 </ng-container>
 
 <ng-container *ngIf="isRendering && !(beerState$ | async | select: 'finished')">
-  <amb-spinner></amb-spinner>
+  <amb-spinner type=ball-pulse-sync></amb-spinner>
 </ng-container>
