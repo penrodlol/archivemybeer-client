@@ -1,10 +1,11 @@
-import { NgModule, Component, Input, OnInit } from '@angular/core';
+import { NgModule, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'amb-spinner[type]',
+  encapsulation: ViewEncapsulation.None,
   template: `
   <div class='spinner'>
     <ngx-spinner
@@ -29,6 +30,14 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
     .message {
       color: var(--text-01);
       font-size: 20px;
+      text-align: center;
+    }
+
+    .loading-text {
+      top: calc(50% + 60px) !important;
+      transform: none !important;
+      left: 0 !important;
+      right: 0 !important;
     }
     `
   ]
@@ -36,7 +45,7 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 export class SpinnerComponent implements OnInit {
   @Input() color = 'var(--ui-04)';
   @Input() size = 'medium';
-  @Input() fullscreen = 'false';
+  @Input() fullscreen = false;
 
   @Input() type: string;
   @Input() message: string;
