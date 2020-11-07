@@ -1,0 +1,5 @@
+// AQUILA OVERRIDES STYLESHEET | Override styles covered by css framework.
+
+.nx {
+  &-modal__content { max-height: unset !important; }
+}
