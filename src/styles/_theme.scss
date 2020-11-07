@@ -8,6 +8,8 @@ $archivemybeer-theme: (
     ui-04: #92a892,
     text-01: #dbdbdb,
     text-02: #0c0c0c,
+    hover-primary: #2222227a,
+    active-primary: #2222227a,
 
     // HEADER
     header-background-color: var(--ui-02),
@@ -25,6 +27,16 @@ $archivemybeer-theme: (
     // TOOLTIP
     tooltip-background-color: var(--ui-04),
     tooltip-text-color: var(--text-02),
+
+    // BUTTON
+    button-primary-background-color: var(--ui-04),
+    button-primary-hover-background-color: #92a892c5,
+    button-secondary-hover-text-color: var(--text-01),
+    button-secondary-border-color: var(--ui-04),
+    button-secondary-hover-border-color: var(--ui-04),
+
+    // TOOLBAR
+    toolbar-background: #00000024,
 );
 
 $nx-themes: nx-register-theme($archivemybeer-theme, archivemybeer-theme);
