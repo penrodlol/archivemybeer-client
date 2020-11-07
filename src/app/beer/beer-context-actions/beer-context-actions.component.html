@@ -1,17 +1,27 @@
-<nx-toolbar>
+<nx-toolbar class="beer-context-actions">
     <span style="margin-right: auto;"></span>
     <button
-        nxButton="secondary small"
+        class="nx-margin-bottom-0 nx-margin-right-s"
+        nxButton="secondary medium"
         type="button"
-        class="nx-margin-right-xs nx-margin-bottom-0"
         (click)="onEdit()">
+        <svg-icon
+            class="nx-margin-right-s"
+            color="var(--ui-04)"
+            fontSize="18px"
+            [key]="isEditing ? 'cancel' : 'edit'">
+        </svg-icon>
         {{isEditing ? 'Cancel' : 'Edit'}}
     </button>
     <button
-        nxButton="primary small"
-        type="button"
         class="nx-margin-bottom-0"
-        (click)="onDelete()">
+        nxButton="primary medium"
+        type="button" >
+        <svg-icon
+            class="nx-margin-right-s"
+            key="bin"
+            fontSize="18px">
+        </svg-icon>
         Delete
-     </button>
+    </button>
 </nx-toolbar>
