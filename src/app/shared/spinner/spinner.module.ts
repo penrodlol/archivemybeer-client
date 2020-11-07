@@ -29,7 +29,7 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
     .message {
       color: var(--text-01);
-      font-size: 20px;
+      font-size: var(--font-large);
       text-align: center;
     }
 

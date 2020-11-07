@@ -2,6 +2,7 @@
 @import "@angular/cdk/a11y-prebuilt.css";
 @import "@aposin/ng-aquila/css/utilities.css";
 @import 'theme.scss';
+@import 'common.scss';
 
 @include nx-build-theme(archivemybeer-theme);
 
