@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "generate-icons": "svg-to-ts"
+    "generate-icons": "svg-to-ts",
+    "scully": "scully",
+    "scully:serve": "scully serve"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +26,9 @@
     "@apollo/client": "^3.0.0",
     "@aposin/ng-aquila": "^10.1.0",
     "@ngneat/svg-icon": "^1.0.0",
+    "@scullyio/init": "^1.0.1",
+    "@scullyio/ng-lib": "^1.0.0",
+    "@scullyio/scully": "^1.0.0",
     "apollo-angular": "^2.0.4",
     "css-vars-ponyfill": "^2.1.2",
     "graphql": "^15.0.0",

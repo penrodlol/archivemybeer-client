@@ -64,3 +64,9 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 
 import cssVars from 'css-vars-ponyfill';
 cssVars({ watch: true, onlyLegacy: true, shadowDOM: true});
+
+/***************************************************************************************************
+* SCULLY IMPORTS
+*/
+// tslint:disable-next-line: align
+import 'zone.js/dist/task-tracking';
