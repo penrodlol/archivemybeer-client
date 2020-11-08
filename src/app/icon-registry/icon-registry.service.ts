@@ -1,14 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NxIconRegistry } from '@aposin/ng-aquila/icon';
-
-export const ICONS = [
-  'bin',
-  'cancel',
-  'edit',
-  'tag',
-  'menu',
-];
+import { ICONS } from './icons';
 
 @Injectable({ providedIn: 'root' })
 export class IconRegistryService {
