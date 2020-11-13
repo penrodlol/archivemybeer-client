@@ -1,20 +1,21 @@
-import { Component, ContentChild, Directive, EventEmitter, HostListener, Input, NgModule, Output, Renderer2 } from '@angular/core';
+import { Component, ContentChild, Directive, EventEmitter, Input, NgModule, OnChanges, Output, Renderer2, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconComponent, NxIconModule } from '@aposin/ng-aquila/icon';
 import { Icon } from '../../icon-registry/icons';
 
 @Directive({ selector: '[ambSpeedDialRotator]' })
-export class SpeedDialRotatorDirective {
+export class SpeedDialRotatorDirective implements OnChanges {
   @Input() isToggled = false;
   @ContentChild(NxIconComponent) private readonly icon: NxIconComponent;
 
   constructor(private r2: Renderer2) { }
 
-  @HostListener('click', ['$event'])
-  onClick(): void {
-    this.r2.setStyle(this.icon.el.nativeElement, 'transform', `rotate(${this.isToggled ? 0 : 90}deg)`);
-    this.r2.setStyle(this.icon.el.nativeElement, 'transition', '100ms ease-in-out');
+  ngOnChanges({ isToggled }: SimpleChanges): void {
+    if (!isToggled?.isFirstChange()) {
+      this.r2.setStyle(this.icon.el.nativeElement, 'transform', `rotate(${this.isToggled ? 90 : 0}deg)`);
+      this.r2.setStyle(this.icon.el.nativeElement, 'transition', '100ms ease-in-out');
+    }
   }
 }
 
@@ -38,7 +39,7 @@ export class SpeedDialRotatorDirective {
           nxIconButton="primary large"
           type="button"
           [isToggled]="isToggled"
-          (click)="fromToggle()">
+          (click)="handleToggle()">
           <nx-icon [name]="toggle"></nx-icon>
         </button>
     </section>
@@ -63,15 +64,18 @@ export class SpeedDialRotatorDirective {
   `],
 })
 export class SpeedDialComponent {
-  @Input() toggle: Icon;
+  @Input() toggle: Icon = 'menu';
   @Input() actions: Icon[];
   @Output() actionTrigger: EventEmitter<Icon> = new EventEmitter();
 
   isToggled = false;
 
-  fromToggle = () => this.isToggled = !this.isToggled;
+  handleToggle = () => this.isToggled = !this.isToggled;
 
-  onClick = (action: Icon) => this.actionTrigger.emit(action);
+  onClick(action: Icon): void {
+    this.actionTrigger.emit(action);
+    this.handleToggle();
+  }
 }
 
 @NgModule({
