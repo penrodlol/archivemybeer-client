@@ -15,10 +15,10 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { BeerContextModule } from '../beer-context/beer-context.module';
 import { SpinnerModule } from '../../shared/spinner/spinner.module';
+import { SelectPipeModule } from '../../shared/pipes/select/select.pipe';
 import { BeerListComponent } from './components/beer-list.component';
 import { BeerCardComponent } from './components/beer-card/beer-card.component';
 import { BeerListRenderObserverDirective } from './directives/beer-list-render-observer.directive';
-import { SelectPipe } from '../pipes/select.pipe';
 
 const beerListRoutes: Routes = [
   { path: '', component: BeerListComponent },
@@ -29,12 +29,12 @@ const beerListRoutes: Routes = [
     BeerListComponent,
     BeerCardComponent,
     BeerListRenderObserverDirective,
-    SelectPipe,
   ],
   imports: [
     CommonModule,
     BeerContextModule,
     SpinnerModule,
+    SelectPipeModule,
     SvgIconsModule,
     NxGridModule,
     NxCardModule,
