@@ -1,4 +1,4 @@
-import { IBeer } from '../../../models/beer.model';
+import { IBeer } from '@models/beer.model';
 
 export interface IBeerModalData {
   beer: IBeer;

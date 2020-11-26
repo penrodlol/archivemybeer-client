@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IconRegistryService } from './icon-registry/icon-registry.service';
+import { IconRegistryService } from '@icon-registry/icon-registry.service';
 
 @Injectable({ providedIn: 'root' })
 export class AppStartupService {

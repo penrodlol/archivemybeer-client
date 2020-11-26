@@ -2,7 +2,7 @@ import { Component, ContentChild, Directive, EventEmitter, Input, NgModule, OnCh
 import { CommonModule } from '@angular/common';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconComponent, NxIconModule } from '@aposin/ng-aquila/icon';
-import { Icon } from '../../icon-registry/icons';
+import { Icon } from '@icon-registry/icons';
 
 @Directive({ selector: '[ambSpeedDialRotator]' })
 export class SpeedDialRotatorDirective implements OnChanges {

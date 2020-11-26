@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { GetBeersStateGQL } from '../../../gql/local/beer-state.gql';
 import { addMany, beersState } from 'src/app/app.state';
-import { GetBeersGQL } from 'src/app/gql/remote/beers.gql';
+import { GetBeersStateGQL } from '@gql/local/beer-state.gql';
+import { GetBeersGQL } from '@gql/remote/beers.gql';
 import { BeersListColumnsService } from '../service/beers-list-columns.service';
 
 @Component({

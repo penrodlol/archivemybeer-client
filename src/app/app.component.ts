@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetBeersGQL } from './gql/remote/beers.gql';
+import { GetBeersGQL } from '@gql/remote/beers.gql';
 import { addMany } from './app.state';
 import { pluck, take } from 'rxjs/operators';
 

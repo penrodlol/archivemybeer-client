@@ -12,9 +12,10 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { LineTruncationLibModule } from 'ngx-line-truncation';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-import { BeerContextModule } from '../beer-context/beer-context.module';
-import { SpinnerModule } from '../../shared/spinner/spinner.module';
-import { SelectPipeModule } from '../../shared/pipes/select/select.pipe';
+import { SpinnerModule } from '@shared/spinner/spinner.module';
+import { SelectPipeModule } from '@shared/pipes/select/select.pipe';
+import { BeerContextModule } from '@beer/beer-context/beer-context.module';
+
 import { BeerListComponent } from './components/beer-list.component';
 import { BeerCardComponent } from './components/beer-card/beer-card.component';
 import { BeerListRenderObserverDirective } from './directives/beer-list-render-observer.directive';

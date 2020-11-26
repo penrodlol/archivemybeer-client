@@ -2,6 +2,14 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@beer/*": ["src/app/beer/*"],
+      "@gql/*": ["src/app/gql/*"],
+      "@header/*": ["src/app/header/*"],
+      "@icon-registry/*": ["src/app/icon-registry/*"],
+      "@models/*": ["src/app/models/*"],
+      "@shared/*": ["src/app/shared/*"],
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,

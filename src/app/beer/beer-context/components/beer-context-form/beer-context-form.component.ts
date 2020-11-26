@@ -2,8 +2,8 @@ import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NX_MODAL_DATA } from '@aposin/ng-aquila/modal';
 import { NgFormsManager } from '@ngneat/forms-manager';
-import { IBeer } from 'src/app/models/beer.model';
-import { trimEntity } from 'src/app/shared/utilities';
+import { IBeer } from '@models/beer.model';
+import { trimEntity } from '@shared/utilities';
 import { IBeerModalData } from '../../models/beer-modal-data.model';
 import { BeerContextCountryService } from '../../services/beer-context-country.service';
 
