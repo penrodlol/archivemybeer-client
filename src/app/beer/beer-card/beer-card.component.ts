@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NxDialogService } from '@aposin/ng-aquila/modal';
+import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
+import { take } from 'rxjs/operators';
 import { IBeer } from '../../models/beer.model';
-import { BeerContextComponent } from '../beer-context/beer-context.component';
+import { BeerContextComponent } from '../beer-context/components/beer-context.component';
 
 @Component({
   selector: 'amb-beer-card',
@@ -13,15 +15,21 @@ export class BeerCardComponent {
 
   constructor(
     public dialogService: NxDialogService,
+    private viewport: NxViewportService,
   ) { }
 
   onBeerSelected(beer: IBeer): void {
-    this.dialogService
-      .open(BeerContextComponent, {
-        showCloseIcon: true,
-        height: '95vh', minHeight: '95vh', maxHeight: '95vh',
-        width: '95vw', minWidth: '95vw', maxWidth: '95vw',
-        data: { beer }
+    this.viewport
+      .max(NxBreakpoints.BREAKPOINT_LARGE)
+      .pipe(take(1))
+      .subscribe(isMobile => {
+        this.dialogService
+          .open(BeerContextComponent, {
+            showCloseIcon: true,
+            height: '95vh', minHeight: '95vh', maxHeight: '95vh',
+            width: '95vw', minWidth: '95vw', maxWidth: '95vw',
+            data: { beer, isMobile }
+          });
       });
   }
 

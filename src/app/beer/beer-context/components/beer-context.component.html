@@ -1,0 +1,26 @@
+<div
+  nxModalContent
+  [style.padding.px]="data.isMobile ? '10' : '40'">
+  <div nxLayout="grid">
+    <div nxRow>
+      <div nxCol="12">
+        <ng-container *ngIf="data.isMobile; else showToolbar">
+          <amb-speed-dial [actions]="['edit', 'bin']"></amb-speed-dial>
+        </ng-container>
+        <ng-template #showToolbar>
+          <amb-beer-context-toolbar></amb-beer-context-toolbar>
+        </ng-template>
+      </div>
+      <div
+        class="nx-margin-top-s margin-box"
+        nxCol="12">
+        <ng-container *ngIf="editing$ | async; else showReadOnlyBeerData">
+          <amb-beer-context-form></amb-beer-context-form>
+        </ng-container>
+        <ng-template #showReadOnlyBeerData>
+          <amb-beer-context-readonly></amb-beer-context-readonly>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

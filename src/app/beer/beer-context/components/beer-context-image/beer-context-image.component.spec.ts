@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BeerContextActionsComponent } from './beer-context-actions.component';
+import { BeerContextImageComponent } from './beer-context-image.component';
 
-describe('BeerContextActionsComponent', () => {
-  let component: BeerContextActionsComponent;
-  let fixture: ComponentFixture<BeerContextActionsComponent>;
+describe('BeerContextImageComponent', () => {
+  let component: BeerContextImageComponent;
+  let fixture: ComponentFixture<BeerContextImageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BeerContextActionsComponent ]
+      declarations: [ BeerContextImageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BeerContextActionsComponent);
+    fixture = TestBed.createComponent(BeerContextImageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

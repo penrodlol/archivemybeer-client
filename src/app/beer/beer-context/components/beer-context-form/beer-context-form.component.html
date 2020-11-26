@@ -1,0 +1,89 @@
+<form
+  class="beer-context-form"
+  nxRow
+  [formGroup]="form.get('beer')">
+  <div nxCol="12,12,12,6">
+    <amb-beer-image-upload [control]="form.get('file')"></amb-beer-image-upload>
+  </div>
+  <div nxCol="12,12,12,6">
+    <div class="nx-margin-bottom-s margin-box">
+      <ng-container *ngTemplateOutlet="beerContextFormInput; context { control: 'name' }"></ng-container>
+    </div>
+    <div class="nx-margin-bottom-m margin-box">
+      <ng-container *ngTemplateOutlet="beerContextFormInput; context:  { control: 'brewer' }"></ng-container>
+    </div>
+    <hr
+      class="nx-margin-bottom-m margin-box"
+      [style.border]="'solid 1px var(--ui-04)'">
+    <div style="border: solid 1px var(--ui-01); padding: 15px; border-radius: var(--button-border-radius); background-color: var(--ui-05);">
+      <div nxRow>
+        <div nxCol="12">
+          <ng-container *ngTemplateOutlet="beerContextFormInput; context: { control: 'style' }"></ng-container>
+        </div>
+      </div>
+      <div
+        nxRow 
+        class="nx-margin-y-s">
+        <div
+          nxCol="12,12,6"
+          [style.padding-left]=0
+          [ngClass]="{ 'beer-context-form__origin--mobile nx-margin-bottom-s': data.isMobile }">
+          <ng-container *ngTemplateOutlet="beerContextFormInput; context: { control: 'city' }"></ng-container>
+        </div>
+        <div
+          nxCol="12,12,6"
+          [style.padding-right]=0
+          [class.beer-context-form__origin--mobile]="data.isMobile">
+          <ng-container *ngTemplateOutlet="beerContextFormInput; context: { control: 'state' }"></ng-container>
+        </div>
+      </div>
+      <div nxRow>
+        <div nxCol="12">
+          <nx-formfield
+            appearance="outline"
+            nxLabel="Country">
+            <nx-dropdown
+              formControlName="country"
+              nxFilterPlaceholder="Type to search country"
+              [nxShowFilter]="true">
+              <nx-dropdown-item
+                *ngFor="let country of countries$ | async"
+                [nxValue]="country">
+              </nx-dropdown-item>
+            </nx-dropdown>
+          </nx-formfield>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<ng-template
+  #beerContextFormInput
+  let-control=control>
+  <nx-formfield
+    appearance="outline"
+    [nxLabel]="control | titlecase">
+    <input
+      required
+      nxInput
+      [formControl]="form.get('beer').get(control)"
+      [maxlength]="INPUT_MAX_LENGTH"/>
+    <span nxFormfieldHint>
+      <ng-container *ngIf="form.get('beer').get(control).value?.length === 0; else charactersRemaining">
+        <span>max. {{INPUT_MAX_LENGTH}} characters</span>
+      </ng-container>
+      <ng-template #charactersRemaining>
+        <span [style.color]="'var(--ui-04)'">
+          {{INPUT_MAX_LENGTH - (form.get('beer').get(control).value.length || 0)}}
+        </span>
+        characters remaining
+      </ng-template>
+    </span>
+    <nx-error nxFormfieldError>
+      <ng-container *ngIf="data.beer._id">
+        <strong>{{ control | titlecase }} is required</strong>
+      </ng-container>
+    </nx-error>
+  </nx-formfield>
+</ng-template>

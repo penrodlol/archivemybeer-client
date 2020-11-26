@@ -6,6 +6,7 @@ $archivemybeer-theme: (
     ui-02: #1a1a1a,
     ui-03: #3a3939,
     ui-04: #92a892,
+    ui-05: #00000024,
     text-01: #dbdbdb,
     text-02: #0c0c0c,
     hover-primary: #2222227a,
@@ -39,7 +40,13 @@ $archivemybeer-theme: (
     button-large-icon-size: var(--font-large),
 
     // TOOLBAR
-    toolbar-background: #00000024,
+    toolbar-background: var(--ui-05),
+
+    // FORM FIELD
+    formfield-outline-border-width: 2px,
+    formfield-outline-control-height: 50px,
+    formfield-outline-border-color: var(--ui-04),
+    formfield-outline-background-color: var(--ui-05),
 );
 
 $nx-themes: nx-register-theme($archivemybeer-theme, archivemybeer-theme);

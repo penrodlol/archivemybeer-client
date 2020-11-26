@@ -1,0 +1,28 @@
+<nx-toolbar class="beer-context-toolbar">
+  <span [style.margin-right]="'auto'"></span>
+  <button
+    #editToggle
+    class="nx-margin-bottom-0 nx-margin-right-s"
+    nxButton="secondary medium"
+    type="button"
+    aria-label="edit toggle for beer"
+    (click)=onClick()>
+    <nx-icon
+      class="nx-margin-right-xs"
+      [style.color]="'var(--ui-04)'"
+      [name]="(editing$ | async) ? 'cancel' : 'edit'">
+    </nx-icon>
+    {{(editing$ | async) ? 'Cancel' : 'Edit'}}
+  </button>
+  <button
+    class="nx-margin-bottom-0"
+    nxButton="primary medium"
+    type="button"
+    aria-label="delete beer">
+    <nx-icon
+      class="nx-margin-right-xs"
+      name="bin">
+    </nx-icon>
+    Delete
+  </button>
+</nx-toolbar>

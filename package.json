@@ -23,6 +23,7 @@
     "@angular/router": "~10.0.3",
     "@apollo/client": "^3.0.0",
     "@aposin/ng-aquila": "^10.1.0",
+    "@ngneat/forms-manager": "^2.3.0",
     "@ngneat/svg-icon": "^1.0.0",
     "apollo-angular": "^2.0.4",
     "css-vars-ponyfill": "^2.1.2",

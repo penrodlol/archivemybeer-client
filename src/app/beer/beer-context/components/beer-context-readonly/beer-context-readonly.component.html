@@ -1,0 +1,87 @@
+<div
+  class="beer-context-readonly"
+  nxRow>
+  <div nxCol="12,12,12,6">
+    <amb-beer-context-image></amb-beer-context-image>
+  </div>
+  <div
+    nxCol="12,12,12,6"
+    [class.nx-margin-top-s]="data.isMobile">
+    <div nxRow>
+      <div nxCol="12">
+        <h1
+          #name
+          [style.font-size.px]=30
+          [line-truncation]="2"
+          [nxTooltip]="data.beer.name"
+          [nxTooltipDisabled]="!name.event"
+          (hasTruncated)="name.event = $event">
+          {{data.beer.name}}
+        </h1>
+      </div>
+      <div nxCol="12">
+        <h2
+          #brewer
+          class="nx-margin-top-0"
+          [line-truncation]="2"
+          [nxTooltip]="data.beer.brewer"
+          [nxTooltipDisabled]="!brewer.event"
+          (hasTruncated)="brewer.event = $event">
+          {{data.beer.brewer}}
+        </h2>
+      </div>
+      <div nxCol="12">
+        <hr [style.border]="'solid 1px var(--ui-04)'">
+      </div>
+    </div>
+    <div
+      class="nx-margin-y-m" 
+      nxRow>
+      <div nxCol="12">
+        <nx-rating [nxDisabled]='true'></nx-rating>
+      </div>
+    </div>
+    <div
+      class="beer-context-readonly__other"
+      nxRow>
+      <div
+        class="beer-context-readonly__other--center-row nx-margin-y-s"
+        [style.padding-left.px]="data.isMobile ? 20 : 16"
+        nxCol="12">
+        <nx-icon
+          size=s
+          name=tag
+          [style.color]="'var(--ui-04)'">
+        </nx-icon>
+        <amb-divider></amb-divider>
+        <h2
+          #style
+          [line-truncation]="2"
+          [nxTooltip]="data.beer.style"
+          [nxTooltipDisabled]="!style.event"
+          (hasTruncated)="style.event = $event">
+          {{data.beer.style}}
+        </h2>
+      </div>
+      <div
+        class="beer-context-readonly__other--center-row nx-margin-bottom-s"
+        [style.padding-left.px]="data.isMobile ? 20 : 16"
+        nxCol="12">
+        <nx-icon
+          size=s
+          name=globe
+          [style.color]="'var(--ui-04)'">
+        </nx-icon>
+        <amb-divider></amb-divider>
+        <h2
+          #origin
+          [line-truncation]="2"
+          [nxTooltip]="data.beer.city + ', ' + data.beer.state + ', ' + data.beer.country"
+          [nxTooltipDisabled]="!origin.event"
+          (hasTruncated)="origin.event = $event">
+          {{data.beer.city}}, {{data.beer.state}}, {{data.beer.country}}
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>

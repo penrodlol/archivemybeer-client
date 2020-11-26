@@ -1,0 +1,21 @@
+<div nxRow>
+  <ng-container *ngIf="isMobile$ | async">
+    <div nxCol="6">
+      <button
+        nxButton="block secondary"
+        type="button"
+        aria-label="cancel changes for beer"
+        (click)="onClick()">
+        Cancel
+      </button>
+    </div>
+  </ng-container>
+  <div nxCol="12,12,12,6">
+    <button
+      nxButton="block primary"
+      type="button"
+      aria-label="save changes for beer">
+      Save
+    </button>
+  </div>
+</div>
