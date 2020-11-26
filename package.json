@@ -7,8 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "generate-icons": "svg-to-ts"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -24,7 +23,6 @@
     "@apollo/client": "^3.0.0",
     "@aposin/ng-aquila": "^10.1.0",
     "@ngneat/forms-manager": "^2.3.0",
-    "@ngneat/svg-icon": "^1.0.0",
     "apollo-angular": "^2.0.4",
     "css-vars-ponyfill": "^2.1.2",
     "graphql": "^15.0.0",
@@ -55,25 +53,8 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "prettier": "^2.1.2",
     "protractor": "~7.0.0",
-    "svg-to-ts": "^5.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
-  },
-  "svg-to-ts": {
-    "conversionType": "object",
-    "srcFiles": [
-      "./src/assets/svg/*.svg"
-    ],
-    "outputDirectory": "./src/assets/svg",
-    "fileName": "svg-icons",
-    "svgoConfig": {
-      "plugins": [
-        {
-          "removeDimensions": true,
-          "cleanupAttrs": true
-        }
-      ]
-    }
   }
 }

@@ -9,7 +9,6 @@ import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 import { NxModalModule } from '@aposin/ng-aquila/modal';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
-import { SvgIconsModule } from '@ngneat/svg-icon';
 import { LineTruncationLibModule } from 'ngx-line-truncation';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
@@ -35,7 +34,6 @@ const beerListRoutes: Routes = [
     BeerContextModule,
     SpinnerModule,
     SelectPipeModule,
-    SvgIconsModule,
     NxGridModule,
     NxCardModule,
     NxImageModule,
