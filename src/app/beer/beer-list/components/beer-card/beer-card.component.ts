@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NxDialogService } from '@aposin/ng-aquila/modal';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { take } from 'rxjs/operators';
-import { IBeer } from '../../models/beer.model';
-import { BeerContextComponent } from '../beer-context/components/beer-context.component';
+import { IBeer } from '../../../../models/beer.model';
+import { BeerContextComponent } from '../../../beer-context/components/beer-context.component';
 
 @Component({
   selector: 'amb-beer-card',

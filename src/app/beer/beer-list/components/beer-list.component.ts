@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { GetBeersStateGQL } from '../../gql/local/beer-state.gql';
+import { GetBeersStateGQL } from '../../../gql/local/beer-state.gql';
 import { addMany, beersState } from 'src/app/app.state';
 import { GetBeersGQL } from 'src/app/gql/remote/beers.gql';
-import { BeersListColumnsService } from './beers-list-columns.service';
+import { BeersListColumnsService } from '../service/beers-list-columns.service';
 
 @Component({
   selector: 'amb-beers-list',
-  templateUrl: './beers-list.component.html',
-  styleUrls: ['./beers-list.component.scss'],
+  templateUrl: './beer-list.component.html',
+  styleUrls: ['./beer-list.component.scss'],
   providers: [BeersListColumnsService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BeersListComponent {
+export class BeerListComponent {
   beerState$ = this.getBeersStateGQL.watch().valueChanges;
   nxCol$ = this.beersListColumnsService.nxCol$;
 
