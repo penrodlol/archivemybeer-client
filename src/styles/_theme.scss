@@ -11,6 +11,7 @@ $archivemybeer-theme: (
     text-02: #0c0c0c,
     hover-primary: #2222227a,
     active-primary: #2222227a,
+    interactive-primary: var(--ui-04),
 
     // HEADER
     header-background-color: var(--ui-02),
@@ -47,6 +48,12 @@ $archivemybeer-theme: (
     formfield-outline-control-height: 50px,
     formfield-outline-border-color: var(--ui-04),
     formfield-outline-background-color: var(--ui-05),
+
+    // DROPDOWN
+    dropdown-panel-header-text-color: var(--text-02),
+    dropdown-panel-header-background-color: var(--ui-04),
+    dropdown-item-hover-color: var(--ui-04),
+    dropdown-filter-input-border-color: var(--text-01),
 );
 
 $nx-themes: nx-register-theme($archivemybeer-theme, archivemybeer-theme);
