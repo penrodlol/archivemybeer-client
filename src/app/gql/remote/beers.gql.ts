@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Query } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { IBeer } from '../../models/beer.model';
+import { IBeer } from '@models/beer.model';
 
 type BeersResponse = {
     beers: {
@@ -21,8 +21,8 @@ type BeersVariables = {
 @Injectable({ providedIn: 'root' })
 export class GetBeersGQL extends Query<BeersResponse, BeersVariables> {
     document = gql`
-        query GetBeers($beersInput: BeersInputDTO) {
-            beers(beersInput: $beersInput) {
+        query GetBeers($input: BeersInputDTO) {
+            beers(input: $input) {
                 collection {
                     _id
                     name

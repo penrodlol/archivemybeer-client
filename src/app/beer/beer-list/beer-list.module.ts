@@ -19,9 +19,16 @@ import { BeerContextModule } from '@beer/beer-context/beer-context.module';
 import { BeerListComponent } from './components/beer-list.component';
 import { BeerCardComponent } from './components/beer-card/beer-card.component';
 import { BeerListRenderObserverDirective } from './directives/beer-list-render-observer.directive';
+import { BeerContextRouterComponent } from './components/beer-context-router/beer-context-router.component';
 
 const beerListRoutes: Routes = [
-  { path: '', component: BeerListComponent },
+  {
+    path: '',
+    component: BeerListComponent,
+    children: [
+      { path: ':id', component: BeerContextRouterComponent },
+    ],
+  },
 ];
 
 @NgModule({
@@ -29,6 +36,7 @@ const beerListRoutes: Routes = [
     BeerListComponent,
     BeerCardComponent,
     BeerListRenderObserverDirective,
+    BeerContextRouterComponent,
   ],
   imports: [
     CommonModule,

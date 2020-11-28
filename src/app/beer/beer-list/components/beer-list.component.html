@@ -32,3 +32,5 @@
 <ng-container *ngIf="isRendering && !(beerState$ | async | select: 'finished')">
   <amb-spinner type=ball-pulse-sync></amb-spinner>
 </ng-container>
+
+<router-outlet></router-outlet>

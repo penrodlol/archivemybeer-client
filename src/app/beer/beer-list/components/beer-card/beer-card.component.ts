@@ -1,9 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { NxDialogService } from '@aposin/ng-aquila/modal';
-import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IBeer } from '@models/beer.model';
-import { BeerContextComponent } from '@beer/beer-context/components/beer-context.component';
-import { take } from 'rxjs/operators';
+import { BeerContextState } from '@beer/state/beer-context.state';
 
 @Component({
   selector: 'amb-beer-card',
@@ -14,23 +12,13 @@ export class BeerCardComponent {
   @Input() beer: IBeer;
 
   constructor(
-    public dialogService: NxDialogService,
-    private viewport: NxViewportService,
+    private beerContextState: BeerContextState,
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
-  onBeerSelected(beer: IBeer): void {
-    this.viewport
-      .max(NxBreakpoints.BREAKPOINT_LARGE)
-      .pipe(take(1))
-      .subscribe(isMobile => {
-        this.dialogService
-          .open(BeerContextComponent, {
-            showCloseIcon: true,
-            height: '95vh', minHeight: '95vh', maxHeight: '95vh',
-            width: '95vw', minWidth: '95vw', maxWidth: '95vw',
-            data: { beer, isMobile }
-          });
-      });
+  onBeerSelected(): void {
+    this.beerContextState.update(this.beer);
+    this.router.navigate([this.beer._id], { relativeTo: this.route });
   }
-
 }
