@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { NX_MODAL_DATA } from '@aposin/ng-aquila/modal';
 import { BeerContextEditingState } from '../state/beer-context-editing.state';
 import { IBeerModalData } from '../models/beer-modal-data.model';
@@ -7,6 +7,7 @@ import { IBeerModalData } from '../models/beer-modal-data.model';
   selector: 'amb-beer-context',
   templateUrl: './beer-context.component.html',
   styleUrls: ['./beer-context.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class BeerContextComponent {
   editing$ = this.editingState.editing$;

@@ -23,7 +23,6 @@ import { SpinnerModule } from '@shared/spinner/spinner.module';
 import { BeerContextComponent } from './components/beer-context.component';
 import { BeerContextToolbarComponent } from './components/beer-context-toolbar/beer-context-toolbar.component';
 import { BeerImageUploadComponent } from './components/beer-image-upload/beer-image-upload.component';
-import { BeerContextFooterActionsComponent } from './components/beer-context-footer-actions/beer-context-footer-actions.component';
 import { BeerContextFormComponent } from './components/beer-context-form/beer-context-form.component';
 import { BeerContextReadonlyComponent } from './components/beer-context-readonly/beer-context-readonly.component';
 import { BeerContextImageComponent } from './components/beer-context-image/beer-context-image.component';
@@ -33,7 +32,6 @@ import { BeerContextImageComponent } from './components/beer-context-image/beer-
     BeerContextComponent,
     BeerContextToolbarComponent,
     BeerImageUploadComponent,
-    BeerContextFooterActionsComponent,
     BeerContextFormComponent,
     BeerContextReadonlyComponent,
     BeerContextImageComponent,

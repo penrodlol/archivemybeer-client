@@ -1,12 +1,6 @@
 .beer-context-readonly {
-  &__other {
-    border: solid 1px var(--ui-01);
-    border-radius: var(--button-border-radius);
-    background-color: var(--ui-05);
-
-    &--center-row {
-      display: flex;
-      align-items: center;
-    }
+  &__center-row {
+    display: flex;
+    align-items: center;
   }
 }

@@ -3,58 +3,96 @@
   nxRow
   [formGroup]="form.get('beer')">
   <div nxCol="12,12,12,6">
-    <amb-beer-image-upload [control]="form.get('file')"></amb-beer-image-upload>
+    <amb-beer-image-upload
+      [control]="form.get('file')">
+    </amb-beer-image-upload>
   </div>
   <div nxCol="12,12,12,6">
-    <div class="nx-margin-bottom-s margin-box">
-      <ng-container *ngTemplateOutlet="beerContextFormInput; context { control: 'name' }"></ng-container>
+    <div class="nx-margin-bottom-s">
+      <ng-container
+        *ngTemplateOutlet="beerContextFormInput;
+        context { control: 'name' }">
+      </ng-container>
     </div>
-    <div class="nx-margin-bottom-m margin-box">
-      <ng-container *ngTemplateOutlet="beerContextFormInput; context:  { control: 'brewer' }"></ng-container>
+    <div>
+      <ng-container
+        *ngTemplateOutlet="beerContextFormInput;
+        context: { control: 'brewer' }">
+      </ng-container>
     </div>
     <hr
-      class="nx-margin-bottom-m margin-box"
+      class="nx-margin-y-m"
       [style.border]="'solid 1px var(--ui-04)'">
-    <div style="border: solid 1px var(--ui-01); padding: 15px; border-radius: var(--button-border-radius); background-color: var(--ui-05);">
-      <div nxRow>
-        <div nxCol="12">
-          <ng-container *ngTemplateOutlet="beerContextFormInput; context: { control: 'style' }"></ng-container>
-        </div>
+    <div
+      class="beer-context__emphasized-background nx-margin-0"
+      nxRow
+      [style.padding]="'10px 0'">
+      <div nxCol="12">
+        <ng-container
+          *ngTemplateOutlet="beerContextFormInput;
+          context: { control: 'style' }">
+        </ng-container>
       </div>
       <div
-        nxRow 
-        class="nx-margin-y-s">
-        <div
-          nxCol="12,12,6"
-          [style.padding-left]=0
-          [ngClass]="{ 'beer-context-form__origin--mobile nx-margin-bottom-s': data.isMobile }">
-          <ng-container *ngTemplateOutlet="beerContextFormInput; context: { control: 'city' }"></ng-container>
-        </div>
-        <div
-          nxCol="12,12,6"
-          [style.padding-right]=0
-          [class.beer-context-form__origin--mobile]="data.isMobile">
-          <ng-container *ngTemplateOutlet="beerContextFormInput; context: { control: 'state' }"></ng-container>
+        class="nx-margin-y-s"
+        nxCol="12">
+        <div nxRow>
+          <div
+            [class.nx-margin-bottom-s]="addCityMargin$ | async"
+            nxCol="12,12,6">
+            <ng-container
+              *ngTemplateOutlet="beerContextFormInput;
+              context: { control: 'city' }">
+            </ng-container>
+          </div>
+          <div nxCol="12,12,6">
+            <ng-container
+              *ngTemplateOutlet="beerContextFormInput;
+              context: { control: 'state' }">
+            </ng-container>
+          </div>
         </div>
       </div>
-      <div nxRow>
-        <div nxCol="12">
-          <nx-formfield
-            appearance="outline"
-            nxLabel="Country">
-            <nx-dropdown
-              formControlName="country"
-              nxFilterPlaceholder="Type to search country"
-              [nxShowFilter]="true">
-              <nx-dropdown-item
-                *ngFor="let country of countries$ | async"
-                [nxValue]="country">
-              </nx-dropdown-item>
-            </nx-dropdown>
-          </nx-formfield>
-        </div>
+      <div nxCol="12">
+        <nx-formfield
+          appearance="outline"
+          nxLabel="Country">
+          <nx-dropdown
+            formControlName="country"
+            nxFilterPlaceholder="Type to search country"
+            nxShowFilter="true">
+            <nx-dropdown-item
+              *ngFor="let country of countries$ | async"
+              [nxValue]="country">
+            </nx-dropdown-item>
+          </nx-dropdown>
+        </nx-formfield>
       </div>
     </div>
+    <ng-container *ngIf="editing$ | async">
+      <div
+        class="nx-margin-top-l"
+        nxRow>
+        <div nxCol="12,12,6">
+          <button
+            nxButton="block secondary"
+            type="button"
+            aria-label="cancel changes for beer"
+            (click)="cancel()">
+            Cancel
+          </button>
+        </div>
+        <div nxCol="12,12,6">
+          <button
+            nxButton="block primary"
+            type="button"
+            aria-label="save changes for beer"
+            (click)="save()">
+            Save
+          </button>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </form>
 

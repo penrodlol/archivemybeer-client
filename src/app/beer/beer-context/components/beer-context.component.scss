@@ -1,0 +1,7 @@
+.beer-context {
+  &__emphasized-background {
+    border: solid 1px var(--ui-01);
+    border-radius: var(--button-border-radius);
+    background-color: var(--ui-05);
+  }
+}
